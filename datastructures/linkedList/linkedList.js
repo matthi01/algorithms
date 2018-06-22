@@ -67,12 +67,37 @@ LinkedList.prototype.removeTail = function() {
     return val;
 };
 
+LinkedList.prototype.search = function(searchValue) {
+    let currentNode = this.head;
+    while (currentNode) {
+        if (currentNode.value === searchValue) {
+            return currentNode.value;
+        }
+        currentNode = currentNode.next;
+    }
+    return null;
+};
+
+LinkedList.prototype.indexOf = function(searchValue) {
+    let currentNode = this.head;
+    let index = 0;
+    let indexArr = [];
+
+    while (currentNode) {
+        if (currentNode.value === searchValue) {
+            indexArr.push(index);
+        }
+        currentNode = currentNode.next;
+        index++;
+    }
+    return indexArr;
+};
+
 let ll = new LinkedList();
 ll.addToHead(100);
 ll.addToHead(200);
+ll.addToHead(300);
+ll.addToHead(200);
 ll.addToTail(1);
 
-console.log(ll.removeHead());
-console.log(ll.removeTail());
-
-console.log(ll);
+console.log(ll.indexOf(200));
